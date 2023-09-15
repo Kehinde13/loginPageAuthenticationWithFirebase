@@ -4,10 +4,12 @@ import { database } from "../firebaseConfig";
 
 
 function SignUp() {
+  //use navigate to dynamically change the location
   const history = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //gets user email and password from the input
     const email = e.target.userEmail.value;
     const password = e.target.password.value;
 

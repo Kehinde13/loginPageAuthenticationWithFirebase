@@ -3,9 +3,10 @@ import { database } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-
+//use navigate to dynamically change the location
 const history = useNavigate()
 
+//function to signout 
  const handleClick = () => {
     signOut(database).then(val => {
        history('/')

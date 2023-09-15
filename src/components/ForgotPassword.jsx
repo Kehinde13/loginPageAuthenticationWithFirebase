@@ -4,9 +4,10 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
-
+//use navigate to dynamically change the location
   const history = useNavigate()
 
+  //gets the eamil and sends a password reset link
   const handleReset = (e) => {
     e.preventDefault();
     let userEmail = e.target.Email.value;
@@ -22,6 +23,7 @@ function ForgotPassword() {
 
   return (
     <div>
+      <h1 className="text-center text-3xl">Forgot Password</h1>
       <form
         onSubmit={(e) => handleReset(e)}
         className="flex flex-col mt-10 border-2 w-[350px] h-1/2 border-blue-400 gap-10 p-10 m-auto rounded-lg"
