@@ -1,42 +1,68 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  signInWithRedirect,
+  auth,
+  provider,
+  getRedirectResult,
+  onAuthStateChanged,
+  database,
+} from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 function LoginPage() {
+  const history = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.userEmail.value;
+    const password = e.target.password.value;
+
+    //Asynchronously signs in using an email and password. "fails if user is not in the database"
+    signInWithEmailAndPassword(database, email, password).then(() => {
+      history('./HomePage')
+    }).catch((err)=> {
+      alert(err.code)
+  });
+  };
+
   return (
-    <div className="mt-10 w-6/12 m-auto">
-      <h1 className="text-3xl text-center">Welcome</h1>
-      <form className="flex flex-col gap-5 mt-10 " action="" method="get">
-        <label htmlFor="userEmail">Username :</label>
+    <div className="mt-10 w-full ">
+      <h1 className="text-center text-3xl">Sign In</h1>
+      <form onSubmit={(e) => handleSubmit(e)}
+      className="flex flex-col mt-10 border-2 w-[350px] h-1/2 border-blue-400 gap-10 p-10 m-auto rounded-lg">
         <input
+          className="border-2 border-blue-400 rounded-md py-2 px-1"
           type="email"
           name="userEmail"
           id="userEmail"
-          className="border-2 rounded-md py-1 px-5 "
+          placeholder="Email"
         />
-        <label htmlFor="userPassword">Password :</label>
         <input
+          className="border-2 border-blue-400 rounded-md py-2 px-1"
           type="password"
-          name="userPassword"
-          id="userPassword"
-          className="border-2 rounded-md py-1 px-5 "
+          name="password"
+          id="password"
+          placeholder="password"
         />
-
-        <a 
-         href=""
-         className="text-red-500" 
-        >
-            Forget Password
-        </a>
-
-        <Link to={"/HomePage"}
-         className="px-5 py-2 mt-5 text-yellow-50 bg-blue-600 rounded-xl text-center cursor-pointer w-2/4 m-auto">
-          Login
+        <Link to={'/ForgotPassword'}
+        className="text-red-400 mt-[-20px] cursor-pointer">
+          Forgot Password?
         </Link>
 
-        <a href="">Sign Up</a>
+        <button className="bg-blue-400 w-[100px] py-1 m-auto rounded-md text-white">
+          SignIn
+        </button>
       </form>
-        
-        
-      
+      <div className="flex gap-5 justify-around mt-5 md:mx-96">
+        <Link to={"./Signup"}>
+          <p className="text-center mt-5 cursor-pointer">Sign Up?</p>
+        </Link>
+
+        <button className="bg-blue-400 w-[150px] py-1 rounded-md text-white">
+          SignIn with google
+        </button>
+      </div>
     </div>
   );
 }
