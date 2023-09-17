@@ -15,6 +15,16 @@ This project is a simple login and signUp authentication with firebase, The user
 - **Error Handlinge**: User should get the appropriate error message if email does not exist in the database.
 
 
+## Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- TailwindCSS
+- Google Firebase
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+
+
 ## Usage
 
 1. Clone the repository:
