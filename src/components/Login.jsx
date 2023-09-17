@@ -11,11 +11,10 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 function LoginPage() {
-  
+  const [user, setUser] = useState();
 
   //use navigate to dynamically change the location
   const history = useNavigate();
-  
 
   //sign in with email and password
   const handleSubmit = (e) => {
@@ -35,27 +34,48 @@ function LoginPage() {
   };
 
   //sign in with google
-  const signInWithGoogle = (e) => {
-    e.preventDefault()
-    signInWithRedirect(auth, provider)
-    setSignedIn(true)
+  const signInWithGoogle = async (e) => {
+    e.preventDefault();
+    signInWithRedirect(auth, provider);
   };
 
-  useEffect(() => {
-    async function getResult() {
-     const response = await getRedirectResult(auth);
-     if(response){
-      history('/HomePage')
-    }
-    }
-    getResult()
-  })
+  //function to go to the homepage 
+  function gotoHomePage() {
+    history("/HomePage");
+  }
 
-  
-  
+  //on every re-render check if the user is signed in with google
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        // The signed-in user info.
+        if (result) {
+          setUser((prev) => result.user);
+        }
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ...
+      });
+  });
 
   return (
     <div className="mt-10 w-full ">
+      {user && (
+        <div className="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
+          <div className="w-[350px] bg-slate-50 mx-auto my-32 h-64 flex flex-col gap-10 justify-center text-center rounded-md">
+            <h1 className="text-3xl">Sign in with google Successful</h1>
+            <button
+              onClick={gotoHomePage}
+              className="bg-blue-400 w-[200px] py-1 mx-auto self-center rounded-md text-white"
+            >
+              Click here to go to HomePage
+            </button>
+          </div>
+        </div>
+      )}
       <h1 className="text-center text-3xl">Sign In</h1>
       <form
         onSubmit={(e) => handleSubmit(e)}
