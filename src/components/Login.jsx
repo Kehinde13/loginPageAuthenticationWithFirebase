@@ -34,32 +34,23 @@ function LoginPage() {
   };
 
   //sign in with google
-  const signInWithGoogle = async (e) => {
+  const signInWithGoogle = (e) => {
     e.preventDefault();
-    signInWithRedirect(auth, provider);
+    signInWithRedirect(auth, provider)
   };
 
-  //function to go to the homepage 
-  function gotoHomePage() {
-    history("/HomePage");
-  }
+  /* useEffect(() => {
+    signInWithGoogle.getRedirectResult()
+    .then(() => {
+      history("./HomePage");
+    })
+    .catch((err) => {
+      history("/");
+      alert(err, 'err')
+    })
+  }, [signInWithGoogle]) */
 
-  //on every re-render check if the user is signed in with google
-  useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        // The signed-in user info.
-        if (result) {
-          setUser((prev) => result.user);
-        }
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorMessage = error.message;
-        alert(errorMessage);
-        // ...
-      });
-  });
+  
 
   return (
     <div className="mt-10 w-full ">
@@ -106,13 +97,13 @@ function LoginPage() {
           SignIn
         </button>
       </form>
-      <div className="flex gap-5 justify-around mt-5 md:mx-96">
+      <div className="flex gap-5 justify-around mt-5 md:w-[50%] mx-auto">
         <Link to={"./Signup"}>
           <p className="text-center mt-5 cursor-pointer">Sign Up?</p>
         </Link>
 
         <button
-          onClick={signInWithGoogle}
+          onClick={(e) => signInWithGoogle(e)}
           className="bg-blue-400 w-[150px] py-1 rounded-md text-white"
         >
           SignIn with google

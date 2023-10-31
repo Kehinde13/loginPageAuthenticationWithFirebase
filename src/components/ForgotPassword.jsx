@@ -1,7 +1,7 @@
 import React from "react";
 import { database } from "../firebaseConfig";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
 //use navigate to dynamically change the location
@@ -38,6 +38,11 @@ function ForgotPassword() {
           Reset Password
         </button>
       </form>
+      <Link to={"/"}>
+        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 md:mx-20">
+          Back to Login
+        </button>
+      </Link>
     </div>
   );
 }

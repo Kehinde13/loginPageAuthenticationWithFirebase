@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { database } from "../firebaseConfig";
 
 
@@ -15,9 +15,11 @@ function SignUp() {
 
     //Creates a new user account associated with the specified email address and password.
     createUserWithEmailAndPassword(database, email, password).then(() => {
-      history('/HomePage')
+      alert('Signed up Successfully')
     }).catch((err)=> {
         alert(err.code)
+    }).finally(() => {
+      history('/')
     });
   };
 
@@ -46,6 +48,11 @@ function SignUp() {
           SignUp
         </button>
       </form>
+      <Link to={"/"}>
+        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 md:mx-20">
+          Back to Login
+        </button>
+      </Link>
     </div>
   );
 }
