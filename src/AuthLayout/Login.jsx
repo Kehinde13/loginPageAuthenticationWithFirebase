@@ -10,7 +10,7 @@ import {
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
-function LoginPage() {
+function LoginPage({setLoggedIn}) {
   const [user, setUser] = useState();
 
   //use navigate to dynamically change the location
@@ -26,11 +26,14 @@ function LoginPage() {
     //Asynchronously signs in using an email and password. "fails if user is not in the database"
     signInWithEmailAndPassword(database, email, password)
       .then(() => {
-        history("./HomePage");
+        setLoggedIn()
       })
       .catch((err) => {
         alert(err.code);
-      });
+      })
+      .finally(() => {
+        history("/");
+      })
   };
 
   //sign in with google
@@ -98,7 +101,7 @@ function LoginPage() {
         </button>
       </form>
       <div className="flex gap-5 justify-around mt-5 md:w-[50%] mx-auto">
-        <Link to={"./Signup"}>
+        <Link to={"/SignUp"}>
           <p className="text-center mt-5 cursor-pointer">Sign Up?</p>
         </Link>
 

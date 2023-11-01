@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { 
@@ -17,9 +17,9 @@ import {
 import AuthLayout from './AuthLayout'
 import ProtectedRoutes from './components/ProtectedRoute'
 
-let isLoggedIn = true;
+let isLoggedIn = false;
 const setLoggedIn = () => {
-  isLoggedIn = !isLoggedIn
+  isLoggedIn = true;
 }
 
 const router = createBrowserRouter([
@@ -39,14 +39,14 @@ const router = createBrowserRouter([
     children: [
       {
       path: '/LoginPage',
-      element: <LoginPage />
+      element: <LoginPage setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>
       },
       {
         path: '/ForgotPassword',
         element: <ForgotPassword />,
       },
       {
-        path: 'SignUp',
+        path: '/SignUp',
         element: <SignUp />
       }
     ]
