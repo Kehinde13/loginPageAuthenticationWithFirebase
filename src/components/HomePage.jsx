@@ -9,7 +9,7 @@ const history = useNavigate()
 //function to signout 
  const handleClick = () => {
     signOut(database).then(val => {
-       history('/')
+       history('/LoginPage')
     })
  }
 

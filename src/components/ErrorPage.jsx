@@ -5,7 +5,7 @@ export default function ErrorPage() {
 
   return (
     <div id="error-page" className="text-center mt-10">
-      <Link to={"/"}>
+      <Link to={"/LoginPage"}>
         <button className="bg-slate-500 text-white rounded-md px-5 py-2 m-5 md:mx-20">
           Back to Login
         </button>

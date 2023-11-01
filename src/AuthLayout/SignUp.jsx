@@ -48,7 +48,7 @@ function SignUp() {
           SignUp
         </button>
       </form>
-      <Link to={"/"}>
+      <Link to={"/LoginPage"}>
         <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 md:mx-20">
           Back to Login
         </button>

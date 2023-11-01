@@ -13,8 +13,8 @@ import {
   ErrorPage,
   Error404Page,
   HomePage
-} from "./components/index.js"
-import App from './App'
+} from "./index.js"
+import AuthLayout from './AuthLayout'
 import ProtectedRoutes from './components/ProtectedRoute'
 
 let isLoggedIn = true;
@@ -23,34 +23,38 @@ const setLoggedIn = () => {
 }
 
 const router = createBrowserRouter([
-  {
-    element: <ProtectedRoutes isLoggedIn={isLoggedIn}/>,
+   {
+      element: <ProtectedRoutes isLoggedIn={isLoggedIn}/>,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <HomePage />
+         },
+      ]
+   },
+   {
+    element: <AuthLayout />,
     errorElement: <ErrorPage />,
-    children:[
-      {     
-        element: <App />,
-        children:[
-          {
-           path: '/',
-           element: <LoginPage setLoggedIn={setLoggedIn} />
-          },
-           {
-            path: '/ForgotPassword',
-            element: <ForgotPassword />
-           },
-        ]
+    children: [
+      {
+      path: '/LoginPage',
+      element: <LoginPage />
+      },
+      {
+        path: '/ForgotPassword',
+        element: <ForgotPassword />,
+      },
+      {
+        path: 'SignUp',
+        element: <SignUp />
       }
     ]
-  },
-  {
-    path: '/HomePage',
-    element: <HomePage />
-   }, 
+   },
    {
     path: '*',
     element: <Error404Page />
-  }
-
+   },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

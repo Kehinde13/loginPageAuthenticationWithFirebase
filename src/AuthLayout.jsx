@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 
 
 
-function App() {
+function AuthLayout() {
 
   return (
     <div>
@@ -13,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export default AuthLayout
