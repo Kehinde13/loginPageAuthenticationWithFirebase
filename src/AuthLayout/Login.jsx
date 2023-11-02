@@ -10,11 +10,12 @@ import {
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
-function LoginPage({setLoggedIn}) {
+function LoginPage({isLoggedIn, setLoggedIn}) {
   const [user, setUser] = useState();
 
   //use navigate to dynamically change the location
   const history = useNavigate();
+  
 
   //sign in with email and password
   const handleSubmit = (e) => {
@@ -26,15 +27,18 @@ function LoginPage({setLoggedIn}) {
     //Asynchronously signs in using an email and password. "fails if user is not in the database"
     signInWithEmailAndPassword(database, email, password)
       .then(() => {
-        setLoggedIn()
+        setLoggedIn(isLoggedIn)
+        history("/");
+        console.log(isLoggedIn);
       })
       .catch((err) => {
         alert(err.code);
       })
-      .finally(() => {
-        history("/");
-      })
   };
+
+  useEffect(() => {
+    
+  })
 
   //sign in with google
   const signInWithGoogle = (e) => {

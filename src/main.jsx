@@ -18,8 +18,8 @@ import AuthLayout from './AuthLayout'
 import ProtectedRoutes from './components/ProtectedRoute'
 
 let isLoggedIn = false;
-const setLoggedIn = () => {
-  isLoggedIn = true;
+const setLoggedIn = (data) => {
+  data = true;
 }
 
 const router = createBrowserRouter([
