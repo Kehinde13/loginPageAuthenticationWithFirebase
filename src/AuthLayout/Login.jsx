@@ -59,7 +59,7 @@ function LoginPage({ User}) {
     <div className="mt-10 w-full ">
       {user && (
         <div className="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
-          <div className="w-[350px] bg-slate-50 mx-auto my-32 h-64 flex flex-col gap-10 justify-center text-center rounded-md">
+          <div className="w-[full] bg-slate-50 mx-auto my-32 h-64 flex flex-col gap-10 justify-center text-center rounded-md">
             <h1 className="text-3xl">Sign in with google Successful</h1>
             <button
               onClick={gotoHomePage}

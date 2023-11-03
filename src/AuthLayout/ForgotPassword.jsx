@@ -22,7 +22,7 @@ function ForgotPassword() {
   };
 
   return (
-    <div>
+    <div className="mt-10 w-full flex flex-col">
       <h1 className="text-center text-3xl">Forgot Password</h1>
       <form
         onSubmit={(e) => handleReset(e)}
@@ -38,8 +38,8 @@ function ForgotPassword() {
           Reset Password
         </button>
       </form>
-      <Link to={"/LoginPage"}>
-        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 md:mx-20">
+      <Link to={"/LoginPage"} className="self-center mt-5">
+        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 mx-auto">
           Back to Login
         </button>
       </Link>

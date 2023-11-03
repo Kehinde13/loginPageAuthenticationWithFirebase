@@ -19,12 +19,12 @@ function SignUp() {
     }).catch((err)=> {
         alert(err.code)
     }).finally(() => {
-      history('/')
+      history('/LoginPage')
     });
   };
 
   return (
-    <div className="mt-10 w-full ">
+    <div className="mt-10 w-full flex flex-col">
       <h1 className="text-center text-3xl">Sign Up</h1>
       <form
         onSubmit={(e) => handleSubmit(e)}
@@ -48,8 +48,8 @@ function SignUp() {
           SignUp
         </button>
       </form>
-      <Link to={"/LoginPage"}>
-        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5 md:mx-20">
+      <Link to={"/LoginPage"} className="self-center">
+        <button className="bg-blue-400 text-white rounded-md px-5 py-2 m-5">
           Back to Login
         </button>
       </Link>
