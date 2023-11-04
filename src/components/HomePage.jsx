@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { database } from "../firebaseConfig";
+import { auth, database } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
@@ -8,7 +8,8 @@ const history = useNavigate()
 
 //function to signout 
  const handleClick = () => {
-    signOut(database).then(val => {
+    signOut(database).then(() => {
+       auth.signOut()
        history('/LoginPage')
     })
  }

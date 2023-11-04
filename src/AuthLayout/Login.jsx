@@ -10,7 +10,7 @@ import {
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
-function LoginPage({ User}) {
+function LoginPage({ User }) {
   const [user, setUser] = useState();
 
   //use navigate to dynamically change the location
@@ -42,16 +42,15 @@ function LoginPage({ User}) {
     signInWithRedirect(auth, provider)
   };
 
-  /* useEffect(() => {
-    signInWithGoogle.getRedirectResult()
+   useEffect(() => {
+    getRedirectResult(auth)
     .then(() => {
-      history("./HomePage");
+      history("/");
     })
     .catch((err) => {
-      history("/");
       alert(err, 'err')
-    })
-  }, [signInWithGoogle]) */
+    });
+  }, []);
 
   
 
