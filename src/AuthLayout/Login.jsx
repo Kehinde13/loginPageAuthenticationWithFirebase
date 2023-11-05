@@ -11,7 +11,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 function LoginPage({ User }) {
-  const [user, setUser] = useState();
 
   //use navigate to dynamically change the location
   const history = useNavigate();
@@ -37,38 +36,24 @@ function LoginPage({ User }) {
 
 
   //sign in with google
-  const signInWithGoogle = (e) => {
-    e.preventDefault();
+  const signInWithGoogle = () => {
     signInWithRedirect(auth, provider)
   };
 
-   useEffect(() => {
-    getRedirectResult(auth)
+  /* useEffect(() => {
+   getRedirectResult(auth)
     .then(() => {
       history("/");
     })
     .catch((err) => {
       alert(err, 'err')
     });
-  }, []);
+  }, []); */
 
   
 
   return (
     <div className="mt-10 w-full ">
-      {user && (
-        <div className="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity">
-          <div className="w-[full] bg-slate-50 mx-auto my-32 h-64 flex flex-col gap-10 justify-center text-center rounded-md">
-            <h1 className="text-3xl">Sign in with google Successful</h1>
-            <button
-              onClick={gotoHomePage}
-              className="bg-blue-400 w-[200px] py-1 mx-auto self-center rounded-md text-white"
-            >
-              Click here to go to HomePage
-            </button>
-          </div>
-        </div>
-      )}
       <h1 className="text-center text-3xl">Sign In</h1>
       <form
         onSubmit={(e) => handleSubmit(e)}
@@ -105,7 +90,7 @@ function LoginPage({ User }) {
         </Link>
 
         <button
-          onClick={(e) => signInWithGoogle(e)}
+          onClick={signInWithGoogle}
           className="bg-blue-400 w-[150px] py-1 rounded-md text-white"
         >
           SignIn with google
