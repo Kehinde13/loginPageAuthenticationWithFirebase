@@ -40,15 +40,16 @@ function LoginPage({ User }) {
     signInWithRedirect(auth, provider)
   };
 
-  /* useEffect(() => {
-   getRedirectResult(auth)
-    .then(() => {
+  useEffect(() => {
+   ( async () => {
+    const res = await getRedirectResult(auth)
+    if(res){
+      User()
       history("/");
-    })
-    .catch((err) => {
-      alert(err, 'err')
-    });
-  }, []); */
+      console.log(res);
+    }
+  })();
+  }, []);
 
   
 
