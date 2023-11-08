@@ -1,14 +1,14 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithRedirect,
   auth,
   provider,
   getRedirectResult,
-  onAuthStateChanged,
   database,
 } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
+
 
 function LoginPage({ User }) {
 
@@ -40,6 +40,7 @@ function LoginPage({ User }) {
     signInWithRedirect(auth, provider)
   };
 
+//check for the response from the signInWithRedirect and login based on result
   useEffect(() => {
    ( async () => {
     const res = await getRedirectResult(auth)

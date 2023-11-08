@@ -12,7 +12,7 @@ This project is a simple login and signUp authentication with firebase, The user
 - **Login with google**: User should be able to sign in with google.
 - **Forget Password?**: User should be able to reset their password.
 - **Password should not be less than 6 characters**: User should get an error message if password is less than 6 characters.
-- **Error Handlinge**: User should get the appropriate error message if email does not exist in the database.
+- **Error Handling**: User should get the appropriate error message if email does not exist in the database.
 
 
 ## Built with

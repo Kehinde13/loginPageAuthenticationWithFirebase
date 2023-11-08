@@ -4,6 +4,7 @@ import ErrorPage from './components/ErrorPage'
 import SignUp from './AuthLayout/SignUp'
 import ForgotPassword from './AuthLayout/ForgotPassword'
 import Error404Page from './components/Error404Page'
+import ProtectedRoutes from './components/ProtectedRoute'
 
 
 export {
@@ -12,5 +13,6 @@ export {
     ErrorPage, 
     SignUp,
     ForgotPassword,
-    Error404Page
+    Error404Page,
+    ProtectedRoutes
 }

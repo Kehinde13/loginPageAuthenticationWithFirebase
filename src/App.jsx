@@ -3,17 +3,16 @@ import {
     createBrowserRouter,
     RouterProvider
   } from 'react-router-dom'
-  
-  import {
-    LoginPage,
-    SignUp,
-    ForgotPassword,
-    ErrorPage,
-    Error404Page,
-    HomePage
-  } from "./index.js"
-  import AuthLayout from './AuthLayout'
-  import ProtectedRoutes from './components/ProtectedRoute'
+import {
+  LoginPage,
+  SignUp,
+  ForgotPassword,
+  ErrorPage,
+  Error404Page,
+  HomePage,
+  ProtectedRoutes
+} from "./index.js"
+import AuthLayout from './AuthLayout'
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(false)
